@@ -1,0 +1,42 @@
+
+{
+  "id": "portfolio001",
+  "displayedName": "Natt Student",
+  "whatIEnjoy": "I enjoy learning about technology, designing websites, and solving problems.",
+  "whatIveTried": "I have tried writing basic programs using C and creating simple websites with HTML and CSS.",
+  "whatImCuriousAbout": "I am curious about web development, UI/UX design, and software applications.",
+  "items": [
+    {
+      "id": "item001",
+      "title": "My First Personal Website",
+      "type": "Course Assignment",
+      "date": "2026-10-18",
+      "role": "Web Developer",
+      "description": "Created a simple personal website using HTML and CSS.",
+      "skills": ["HTML", "CSS", "Web Design"],
+      "reflection": {
+        "whatIDid": "Designed and developed a personal website with multiple sections.",
+        "whatILearned": "Learned how HTML structures a webpage and how CSS controls its appearance.",
+        "challenge": "Making the website look good on both desktop and mobile devices.",
+        "nextStep": "Learn Bootstrap and improve responsive design."
+      },
+      "evidence": ["https://example.com/my-website"]
+    },
+    {
+      "id": "item002",
+      "title": "Basic C Programming Practice",
+      "type": "Programming Practice",
+      "date": "2026-10-25",
+      "role": "Programmer",
+      "description": "Practiced writing C programs using variables, conditions, and loops.",
+      "skills": ["C Programming", "Problem Solving"],
+      "reflection": {
+        "whatIDid": "Wrote simple programs to calculate numbers and solve basic problems.",
+        "whatILearned": "Understood how to use if-else statements and loops in C.",
+        "challenge": "Finding and fixing errors in the program.",
+        "nextStep": "Practice more complex programming problems."
+      },
+      "evidence": ["https://example.com/c-programming"]
+    }
+  ]
+}

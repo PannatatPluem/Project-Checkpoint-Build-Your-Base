@@ -1,0 +1,254 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Prompt', sans-serif;
+    background-color: #f4f7fb;
+    color: #263449;
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #172554, #2563eb);
+    color: white;
+    padding: 35px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #dbeafe;
+    margin: 0;
+}
+
+/* Main Container */
+.container {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+/* Section */
+section {
+    background: white;
+    padding: 28px;
+    margin-bottom: 28px;
+    border-radius: 16px;
+    border: 1px solid #e5eaf2;
+    box-shadow: 0 5px 18px rgba(30, 64, 175, 0.05);
+}
+
+section h2 {
+    color: #1e3a8a;
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #dbeafe;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+label {
+    font-weight: 500;
+    color: #334155;
+    margin-top: 5px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 14px;
+    background: #ffffff;
+    color: #1e293b;
+    transition: 0.2s ease;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.13);
+}
+
+/* Buttons */
+button,
+.btn {
+    border: none;
+    border-radius: 9px;
+    padding: 12px 22px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button[type="submit"],
+.btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+button[type="submit"]:hover,
+.btn-primary:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(37, 99, 235, 0.2);
+}
+
+/* Portfolio List */
+#portfolio-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Portfolio Card */
+#portfolio-list > .card {
+    background: #ffffff;
+    border: 1px solid #dbeafe !important;
+    border-radius: 14px;
+    padding: 22px !important;
+    margin: 0 !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+    transition: 0.2s ease;
+}
+
+#portfolio-list > .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
+}
+
+#portfolio-list h4 {
+    color: #1d4ed8;
+    font-weight: 600;
+    font-size: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 10px;
+}
+
+#portfolio-list p {
+    font-size: 14px;
+    color: #475569;
+}
+
+/* Portfolio Item Card */
+#portfolio-list .border {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 10px;
+    padding: 15px !important;
+    margin-top: 12px;
+}
+
+#portfolio-list h5 {
+    color: #1e40af;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#portfolio-list a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#portfolio-list a:hover {
+    text-decoration: underline;
+}
+
+/* Select Portfolio */
+select[name="portfolioId"] {
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    header {
+        padding: 25px 15px;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .container {
+        margin: 20px auto;
+        padding: 0 14px;
+    }
+
+    section {
+        padding: 20px 16px;
+    }
+
+    section h2 {
+        font-size: 20px;
+    }
+
+    #portfolio-list {
+        grid-template-columns: 1fr;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+    /* Font Awesome Icons */
+button i,
+h2 i {
+    margin-right: 8px;
+}
+
+button i {
+    font-size: 15px;
+}
+
+h2 i {
+    color: #2563eb;
+}
+
+/* Icon hover effect */
+button:hover i {
+    transform: scale(1.15);
+}
+
+button i {
+    display: inline-block;
+    transition: 0.2s ease;
+}
+}
+

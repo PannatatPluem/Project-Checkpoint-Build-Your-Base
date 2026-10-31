@@ -1,0 +1,42 @@
+
+{
+  "id": "portfolio002",
+  "displayedName": "Alex Developer",
+  "whatIEnjoy": "I enjoy creating digital content and exploring new technologies.",
+  "whatIveTried": "I have tried designing graphics and building simple websites.",
+  "whatImCuriousAbout": "I want to learn more about JavaScript and interactive web applications.",
+  "items": [
+    {
+      "id": "item003",
+      "title": "Personal Profile Design",
+      "type": "Design Project",
+      "date": "2026-10-20",
+      "role": "Designer",
+      "description": "Designed a personal profile page with a clean and simple layout.",
+      "skills": ["UI Design", "CSS", "Creativity"],
+      "reflection": {
+        "whatIDid": "Created the layout and selected suitable colors and fonts.",
+        "whatILearned": "Learned the importance of visual consistency.",
+        "challenge": "Choosing a layout that is easy to use.",
+        "nextStep": "Improve the design using Bootstrap."
+      },
+      "evidence": ["https://example.com/profile-design"]
+    },
+    {
+      "id": "item004",
+      "title": "JavaScript Introduction",
+      "type": "Self Learning",
+      "date": "2026-10-28",
+      "role": "Learner",
+      "description": "Studied basic JavaScript to understand how websites become interactive.",
+      "skills": ["JavaScript", "Programming"],
+      "reflection": {
+        "whatIDid": "Practiced variables, functions, and simple events.",
+        "whatILearned": "Learned how JavaScript interacts with HTML elements.",
+        "challenge": "Understanding how functions and events work together.",
+        "nextStep": "Build a small interactive web application."
+      },
+      "evidence": ["https://example.com/javascript-practice"]
+    }
+  ]
+}
