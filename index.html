@@ -16,75 +16,84 @@
 <body class="container py-4">
 
     <h1>
-    <i class="fa-solid fa-briefcase"></i>
-    My Learning Portfolios
-</h1>
+        <i class="fa-solid fa-briefcase"></i>
+        My Learning Portfolios
+    </h1>
 
 
-    <h3>Create Portfolio</h3>
-    <section>
+    <div class="row g-4">
+        <div class="col-12 col-lg-6">
+            <h3>Create Portfolio</h3>
+            <section>
+                <form id="portfolio-form">
+                    <input class="form-control mb-2" name="name" placeholder="Your Name" required>
 
+                    <textarea class="form-control mb-2" name="whatIEnjoy" placeholder="What I Enjoy"
+                        required></textarea>
 
+                    <textarea class="form-control mb-2" name="whatIveTried" placeholder="What I've Tried"
+                        required></textarea>
 
-        <form id="portfolio-form">
-            <input class="form-control mb-2" name="name" placeholder="Your Name" required>
+                    <textarea class="form-control mb-2" name="whatImCuriousAbout" placeholder="What I'm Curious About"
+                        required></textarea>
 
-            <textarea class="form-control mb-2" name="whatIEnjoy" placeholder="What I Enjoy" required></textarea>
+                    <button type="submit">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Create Portfolio
+                    </button>
+                </form>
 
-            <textarea class="form-control mb-2" name="whatIveTried" placeholder="What I've Tried" required></textarea>
+                <hr>
+            </section>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h3>Add Portfolio Item</h3>
 
-            <textarea class="form-control mb-2" name="whatImCuriousAbout" placeholder="What I'm Curious About"
-                required></textarea>
+            <section>
+                <form id="item-form">
 
-            <button type="submit">
-                <i class="fa-solid fa-user-plus"></i>
-                Create Portfolio
-            </button>
-        </form>
+                    <select class="form-select mb-2" name="portfolioId" required>
+                        <option value="">Select Portfolio</option>
+                    </select>
 
-        <hr>
-    </section>
+                    <input class="form-control mb-2" name="title" placeholder="Title" required>
 
-    <h3>Add Portfolio Item</h3>
+                    <input class="form-control mb-2" name="type" placeholder="Type" required>
 
-    <section>
-        <form id="item-form">
+                    <input class="form-control mb-2" type="date" name="date" required>
 
-            <select class="form-select mb-2" name="portfolioId" required>
-                <option value="">Select Portfolio</option>
-            </select>
+                    <input class="form-control mb-2" name="role" placeholder="Role" required>
 
-            <input class="form-control mb-2" name="title" placeholder="Title" required>
+                    <textarea class="form-control mb-2" name="description" placeholder="Description"
+                        required></textarea>
 
-            <input class="form-control mb-2" name="type" placeholder="Type" required>
+                    <input class="form-control mb-2" name="skills" placeholder="Skills (HTML, CSS, JavaScript)"
+                        required>
 
-            <input class="form-control mb-2" type="date" name="date" required>
+                    <textarea class="form-control mb-2" name="whatIDid" placeholder="What I did" required></textarea>
 
-            <input class="form-control mb-2" name="role" placeholder="Role" required>
+                    <textarea class="form-control mb-2" name="whatILearned" placeholder="What I learned"
+                        required></textarea>
 
-            <textarea class="form-control mb-2" name="description" placeholder="Description" required></textarea>
+                    <textarea class="form-control mb-2" name="challenge" placeholder="Challenge" required></textarea>
 
-            <input class="form-control mb-2" name="skills" placeholder="Skills (HTML, CSS, JavaScript)" required>
+                    <textarea class="form-control mb-2" name="nextStep" placeholder="Next step" required></textarea>
 
-            <textarea class="form-control mb-2" name="whatIDid" placeholder="What I did" required></textarea>
+                    <input class="form-control mb-2" type="url" name="evidence" placeholder="Evidence URL" required>
 
-            <textarea class="form-control mb-2" name="whatILearned" placeholder="What I learned" required></textarea>
+                    <button type="submit">
+                        <i class="fa-solid fa-folder-plus"></i>
+                        Add Portfolio Item
+                    </button>
 
-            <textarea class="form-control mb-2" name="challenge" placeholder="Challenge" required></textarea>
+                </form>
 
-            <textarea class="form-control mb-2" name="nextStep" placeholder="Next step" required></textarea>
+                <hr>
+            </section>
+        </div>
+    </div>
+    </div>
 
-            <input class="form-control mb-2" type="url" name="evidence" placeholder="Evidence URL" required>
-
-            <button type="submit">
-                <i class="fa-solid fa-folder-plus"></i>
-                Add Portfolio Item
-            </button>
-
-        </form>
-
-        <hr>
-    </section>
 
     <h3>Portfolio List</h3>
 
