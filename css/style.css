@@ -40,7 +40,7 @@ header p {
 
 /* Section */
 section {
-    background: white;
+    background: #e3e3d9;
     padding: 28px;
     margin-bottom: 28px;
     border-radius: 16px;
@@ -111,13 +111,13 @@ button,
 
 button[type="submit"],
 .btn-primary {
-    background: #2563eb;
+    background: #6096b4;
     color: white;
 }
 
 button[type="submit"]:hover,
 .btn-primary:hover {
-    background: #1d4ed8;
+    background: #386d8a;
     transform: translateY(-2px);
     box-shadow: 0 5px 12px rgba(37, 99, 235, 0.2);
 }
