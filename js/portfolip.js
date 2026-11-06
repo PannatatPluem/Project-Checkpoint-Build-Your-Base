@@ -1,36 +1,28 @@
-// Load saved data
-let portfolios = JSON.parse(
-    localStorage.getItem("portfolios") || "[]"
-);
+let portfolios = JSON.parse(localStorage.getItem("portfolios") || "[]");
 
-// Save data
 function saveData() {
-    localStorage.setItem(
-        "portfolios",
-        JSON.stringify(portfolios)
-    );
+  localStorage.setItem("portfolios", JSON.stringify(portfolios));
 }
 
-// Create Portfolio
-document.querySelector("#portfolio-form")
-.addEventListener("submit", function(event) {
-
+document
+  .querySelector("#portfolio-form")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
 
     const data = new FormData(this);
 
     const portfolio = {
-        id: "user" + Date.now(),
+      id: "user" + Date.now(),
 
-        name: data.get("name"),
+      name: data.get("name"),
 
-        whatIEnjoy: data.get("whatIEnjoy"),
+      whatIEnjoy: data.get("whatIEnjoy"),
 
-        whatIveTried: data.get("whatIveTried"),
+      whatIveTried: data.get("whatIveTried"),
 
-        whatImCuriousAbout: data.get("whatImCuriousAbout"),
+      whatImCuriousAbout: data.get("whatImCuriousAbout"),
 
-        items: []
+      items: [],
     };
 
     portfolios.push(portfolio);
@@ -42,78 +34,69 @@ document.querySelector("#portfolio-form")
     renderPortfolios();
 
     alert("Portfolio Created!");
-});
+  });
 
-
-// Add Portfolio Item
-document.querySelector("#item-form")
-.addEventListener("submit", function(event) {
-
+document
+  .querySelector("#item-form")
+  .addEventListener("submit", function (event) {
     event.preventDefault();
 
     const data = new FormData(this);
 
     const portfolioId = data.get("portfolioId");
 
-    const portfolio = portfolios.find(
-        p => p.id === portfolioId
-    );
+    const portfolio = portfolios.find((p) => p.id === portfolioId);
 
     if (!portfolio) {
-        alert("Please select a Portfolio");
-        return;
+      alert("Please select a Portfolio");
+      return;
     }
 
     const evidence = data.get("evidence");
 
-    // Validate URL
     try {
-        const url = new URL(evidence);
+      const url = new URL(evidence);
 
-        if (!["http:", "https:"].includes(url.protocol)) {
-            throw new Error("Invalid URL");
-        }
-
+      if (!["http:", "https:"].includes(url.protocol)) {
+        throw new Error("Invalid URL");
+      }
     } catch {
-        alert("Please enter a valid URL");
-        return;
+      alert("Please enter a valid URL");
+      return;
     }
 
-    // Create Item Object
     const item = {
+      id: "item" + Date.now(),
 
-        id: "item" + Date.now(),
+      title: data.get("title"),
 
-        title: data.get("title"),
+      type: data.get("type"),
 
-        type: data.get("type"),
+      date: data.get("date"),
 
-        date: data.get("date"),
+      role: data.get("role"),
 
-        role: data.get("role"),
+      description: data.get("description"),
 
-        description: data.get("description"),
+      skills: data
+        .get("skills")
+        .split(",")
+        .map((skill) => skill.trim())
+        .filter((skill) => skill !== ""),
 
-        skills: data.get("skills")
-            .split(",")
-            .map(skill => skill.trim())
-            .filter(skill => skill !== ""),
+      reflection: {
+        whatIDid: data.get("whatIDid"),
 
-        reflection: {
+        whatILearned: data.get("whatILearned"),
 
-            whatIDid: data.get("whatIDid"),
+        challenge: data.get("challenge"),
 
-            whatILearned: data.get("whatILearned"),
+        nextStep: data.get("nextStep"),
+      },
 
-            challenge: data.get("challenge"),
-
-            nextStep: data.get("nextStep")
-        },
-
-        evidence: [evidence]
+      evidence: [evidence],
     };
 
-    // Add item to selected Portfolio
     portfolio.items.push(item);
 
     saveData();
@@ -123,120 +106,95 @@ document.querySelector("#item-form")
     renderPortfolios();
 
     alert("Portfolio Item Saved!");
-});
+  });
 
-
-// Display Portfolio
 function renderPortfolios() {
+  const list = document.querySelector("#portfolio-list");
 
-    const list = document.querySelector("#portfolio-list");
+  const select = document.querySelector('[name="portfolioId"]');
 
-    const select = document.querySelector(
-        '[name="portfolioId"]'
-    );
+  list.innerHTML = "";
 
-    list.innerHTML = "";
+  select.innerHTML = '<option value="">Select Portfolio</option>';
 
-    select.innerHTML =
-        '<option value="">Select Portfolio</option>';
+  portfolios.forEach((portfolio) => {
+    const option = document.createElement("option");
 
-    portfolios.forEach(portfolio => {
+    option.value = portfolio.id;
+    option.textContent = portfolio.name;
 
-        // Add option to select
-        const option = document.createElement("option");
+    select.appendChild(option);
 
-        option.value = portfolio.id;
-        option.textContent = portfolio.name;
+    const card = document.createElement("div");
 
-        select.appendChild(option);
+    card.className = "card p-3 mb-3";
 
-        // Display Portfolio
-        const card = document.createElement("div");
+    const heading = document.createElement("h4");
+    heading.textContent = portfolio.name;
 
-        card.className = "card p-3 mb-3";
+    const enjoy = document.createElement("p");
+    enjoy.textContent = "Enjoy: " + portfolio.whatIEnjoy;
 
-        const heading = document.createElement("h4");
-        heading.textContent = portfolio.name;
+    const tried = document.createElement("p");
+    tried.textContent = "Tried: " + portfolio.whatIveTried;
 
-        const enjoy = document.createElement("p");
-        enjoy.textContent =
-            "Enjoy: " + portfolio.whatIEnjoy;
+    const curious = document.createElement("p");
+    curious.textContent = "Curious: " + portfolio.whatImCuriousAbout;
 
-        const tried = document.createElement("p");
-        tried.textContent =
-            "Tried: " + portfolio.whatIveTried;
+    card.append(heading, enjoy, tried, curious);
 
-        const curious = document.createElement("p");
-        curious.textContent =
-            "Curious: " + portfolio.whatImCuriousAbout;
+    portfolio.items.forEach((item) => {
+      const itemCard = document.createElement("div");
+      itemCard.className = "border rounded p-3 mb-3";
 
-        card.append(heading, enjoy, tried, curious);
+      const title = document.createElement("h5");
+      title.innerHTML = '<i class="fa-solid fa-folder-open"></i> ';
+      title.append(document.createTextNode(item.title));
 
-        portfolio.items.forEach(item => {
+      const type = document.createElement("p");
+      type.innerHTML = "<strong>Type:</strong> ";
+      type.append(document.createTextNode(item.type));
 
-            
-portfolio.items.forEach(item => {
+      const date = document.createElement("p");
+      date.innerHTML = "<strong>Date:</strong> ";
+      date.append(document.createTextNode(item.date));
 
-    const itemCard = document.createElement("div");
-    itemCard.className = "border rounded p-3 mb-3";
+      const role = document.createElement("p");
+      role.innerHTML = "<strong>Role:</strong> ";
+      role.append(document.createTextNode(item.role));
 
-    // Title
-    const title = document.createElement("h5");
-    title.innerHTML = '<i class="fa-solid fa-folder-open"></i> ';
-    title.append(document.createTextNode(item.title));
+      const description = document.createElement("p");
+      description.innerHTML = "<strong>Description:</strong> ";
+      description.append(document.createTextNode(item.description));
 
-    // Type
-    const type = document.createElement("p");
-    type.innerHTML = "<strong>Type:</strong> ";
-    type.append(document.createTextNode(item.type));
+      const skills = document.createElement("p");
+      skills.innerHTML = "<strong>Skills:</strong> ";
+      skills.append(document.createTextNode(item.skills.join(", ")));
 
-    // Date
-    const date = document.createElement("p");
-    date.innerHTML = "<strong>Date:</strong> ";
-    date.append(document.createTextNode(item.date));
-
-    // Role
-    const role = document.createElement("p");
-    role.innerHTML = "<strong>Role:</strong> ";
-    role.append(document.createTextNode(item.role));
-
-    // Description
-    const description = document.createElement("p");
-    description.innerHTML = "<strong>Description:</strong> ";
-    description.append(document.createTextNode(item.description));
-
-    // Skills
-    const skills = document.createElement("p");
-    skills.innerHTML = "<strong>Skills:</strong> ";
-    skills.append(document.createTextNode(item.skills.join(", ")));
-
-    // Reflection
-    const reflectionTitle = document.createElement("h6");
-    reflectionTitle.innerHTML =
+      const reflectionTitle = document.createElement("h6");
+      reflectionTitle.innerHTML =
         '<i class="fa-solid fa-lightbulb"></i> Reflection';
 
-    const reflection = document.createElement("div");
-    reflection.innerHTML = `
-        <p><strong>What I did:</strong> ${escapeHTML(item.reflection.whatIDid)}</p>
-        <p><strong>What I learned:</strong> ${escapeHTML(item.reflection.whatILearned)}</p>
-        <p><strong>Challenge:</strong> ${escapeHTML(item.reflection.challenge)}</p>
-        <p><strong>Next step:</strong> ${escapeHTML(item.reflection.nextStep)}</p>
-    `;
+      const reflection = document.createElement("div");
+      reflection.innerHTML = `
+                <p><strong>What I did:</strong> ${escapeHTML(item.reflection.whatIDid)}</p>
+                <p><strong>What I learned:</strong> ${escapeHTML(item.reflection.whatILearned)}</p>
+                <p><strong>Challenge:</strong> ${escapeHTML(item.reflection.challenge)}</p>
+                <p><strong>Next step:</strong> ${escapeHTML(item.reflection.nextStep)}</p>
+            `;
 
-   
-    const evidenceTitle = document.createElement("p");
-    evidenceTitle.innerHTML = "<strong>Evidence:</strong> ";
+      const evidenceTitle = document.createElement("p");
+      evidenceTitle.innerHTML = "<strong>Evidence:</strong> ";
 
-    const evidence = document.createElement("a");
-    evidence.href = item.evidence[0];
-    evidence.textContent = "View Evidence";
-    evidence.target = "_blank";
-    evidence.rel = "noopener noreferrer";
+      const evidence = document.createElement("a");
+      evidence.href = item.evidence[0];
+      evidence.textContent = "View Evidence";
+      evidence.target = "_blank";
+      evidence.rel = "noopener noreferrer";
 
-    evidenceTitle.appendChild(evidence);
+      evidenceTitle.appendChild(evidence);
 
-   
-    itemCard.append(
+      itemCard.append(
         title,
         type,
         date,
@@ -245,29 +203,27 @@ portfolio.items.forEach(item => {
         skills,
         reflectionTitle,
         reflection,
-        evidenceTitle
-    );
+        evidenceTitle,
+      );
 
-    card.appendChild(itemCard);
-});
+      card.appendChild(itemCard);
+    }); 
 
-        });
-
-        list.appendChild(card);
-    });
+    list.appendChild(card);
+  });
 }
 
-
-// Show data when page opens
 renderPortfolios();
 function escapeHTML(value) {
-    return String(value ?? "").replace(/[&<>"']/g, char => ({
+  return String(value ?? "").replace(
+    /[&<>"']/g,
+    (char) =>
+      ({
         "&": "&amp;",
         "<": "&lt;",
         ">": "&gt;",
         '"': "&quot;",
-        "'": "&#39;"
-    })[char]);
+        "'": "&#39;",
+      })[char],
+  );
 }
-
-
