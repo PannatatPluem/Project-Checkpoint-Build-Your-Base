@@ -269,3 +269,5 @@ function escapeHTML(value) {
         "'": "&#39;"
     })[char]);
 }
+
+
